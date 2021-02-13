@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <style>
+      .card {
+        height: 300px;
+        border-radius: 10px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Testing Ionic Animations API</h1>
+    <button onclick="renew()">Renew</button>
+    <div class="card"></div>
+    <script type="module">
+      import { createAnimation } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/esm/index.mjs";
+
+      const animation = createAnimation()
+        .addElement(document.querySelector(".card"))
+        .easing("ease-in")
+        .duration(1000)
+        .fromTo("boxShadow", "0 0 16px 10px green", "0 0 0 0 transparent");
+
+      animation.play();
+
+      window.renew = function renew() {
+        animation.stop();
+        animation.play();
+      };
+    </script>
+  </body>
+</html>
